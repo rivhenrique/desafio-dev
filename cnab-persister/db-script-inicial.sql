@@ -1,6 +1,9 @@
+drop table transaction;
+drop table transaction_type;
+
 create table transaction_type
 (
-    type_id numeric not null constraint pk_transaction_type_id primary key,
+    transaction_type_id numeric not null constraint pk_transaction_type_id primary key,
     description varchar(50),
     nature  varchar(20),
     signal  numeric check ( signal in (0,1) )
@@ -18,11 +21,11 @@ insert into transaction_type values (9, 'Aluguel', 'Saída', 0);
 
 create sequence seq_id_transaction;
 
-create table transaction
+create table transaction_entity
 (
     transaction_id numeric default nextval('seq_id_transaction'::regclass) not null
         constraint pk_transaction_id primary key,
-    type_id numeric not null constraint transaction_type_fk_type references transaction_type(type_id),
+    type_id numeric not null constraint transaction_type_fk_type references transaction_type(transaction_type_id),
     amount numeric(19,2),
     date_time timestamp,
     document varchar(11),
