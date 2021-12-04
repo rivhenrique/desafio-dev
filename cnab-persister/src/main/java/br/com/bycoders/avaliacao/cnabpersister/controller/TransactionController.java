@@ -1,5 +1,6 @@
 package br.com.bycoders.avaliacao.cnabpersister.controller;
 
+import br.com.bycoders.avaliacao.cnabpersister.dto.StoresTransactionsResponseDTO;
 import br.com.bycoders.avaliacao.cnabpersister.model.TransactionEntity;
 import br.com.bycoders.avaliacao.cnabpersister.service.TransactionService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,9 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @GetMapping("/new")
-    public TransactionEntity createNewTransaction() {
-        return transactionService.createNewEntity();
+    @GetMapping("/stores/report")
+    public StoresTransactionsResponseDTO generateReportOfStore() {
+        return transactionService.detailStoreTransactions();
     }
 
 }
