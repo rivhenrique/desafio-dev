@@ -1,7 +1,7 @@
 package br.com.bycoders.avaliacao.cnabpersister.repository;
 
-import br.com.bycoders.avaliacao.cnabpersister.model.Transaction;
+import br.com.bycoders.avaliacao.cnabpersister.model.TransactionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+public interface TransactionRepository extends JpaRepository<TransactionEntity, Long> {
 }

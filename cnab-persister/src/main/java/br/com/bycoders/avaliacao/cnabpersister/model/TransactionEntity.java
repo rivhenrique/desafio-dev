@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "transaction")
-public class Transaction {
+public class TransactionEntity {
 
     @Id
     @Column(name = "transaction_id")
