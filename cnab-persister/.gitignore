@@ -148,3 +148,5 @@ buildNumber.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+iml,maven,java,git
 /src/main/docker/.idea/
+/.mvn/
+/.idea/
