@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,7 +32,6 @@ public class TransactionService {
         transactionEntity.setDocument("12345678912");
         transactionEntity.setStoreName("Teste né 2");
         transactionEntity.setStoreOwnerName("Eu");
-        transactionEntity.setDateTime(LocalDateTime.now());
         transactionEntity.setTypeId(1L);
         return transactionRepository.save(transactionEntity);
     }
@@ -62,4 +60,7 @@ public class TransactionService {
         return dtoList;
     }
 
+    public void persistListFromFile(List<TransactionEntity> transactionEntities) {
+        transactionRepository.saveAll(transactionEntities);
+    }
 }
