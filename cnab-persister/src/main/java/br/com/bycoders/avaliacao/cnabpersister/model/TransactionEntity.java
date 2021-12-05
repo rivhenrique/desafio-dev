@@ -19,8 +19,11 @@ public class TransactionEntity {
     @Column(name = "amount")
     private BigDecimal amount;
 
-    @Column(name = "date_time")
-    private LocalDateTime dateTime;
+    @Column(name = "date")
+    private String date;
+
+    @Column(name = "time")
+    private String time;
 
     @Column(name = "document")
     private String document;
@@ -58,12 +61,20 @@ public class TransactionEntity {
         this.amount = amount;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public String getDate() {
+        return date;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getDocument() {
@@ -100,11 +111,12 @@ public class TransactionEntity {
 
     @Override
     public String toString() {
-        return "Transaction{" +
+        return "TransactionEntity{" +
                 "transactionId=" + transactionId +
-                ", type_id=" + typeId +
+                ", typeId=" + typeId +
                 ", amount=" + amount +
-                ", dateTime=" + dateTime +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
                 ", document='" + document + '\'' +
                 ", cardNumber='" + cardNumber + '\'' +
                 ", storeOwnerName='" + storeOwnerName + '\'' +

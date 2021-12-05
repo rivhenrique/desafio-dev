@@ -16,7 +16,8 @@ public class TransactionDTO {
 
     public TransactionDTO(TransactionEntity entity) {
         this.amount = entity.getAmount();
-        this.transactionDateTime = entity.getDateTime();
+        //FIXME
+        // this.transactionDateTime = entity.getDateTime();
         this.receiverDocument = entity.getDocument();
     }
 
