@@ -2,7 +2,6 @@ package br.com.bycoders.avaliacao.cnabpersister.service;
 
 import br.com.bycoders.avaliacao.cnabpersister.enums.TransactionElementsEnum;
 import br.com.bycoders.avaliacao.cnabpersister.model.TransactionEntity;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,13 +16,19 @@ import java.util.Map;
 @Service
 public class CnabFileService {
 
-    public List<TransactionEntity> processFile(MultipartFile file) {
+    private final TransactionService transactionService;
+
+    public CnabFileService(TransactionService transactionService) {
+        this.transactionService = transactionService;
+    }
+
+    public void processFile(MultipartFile file) {
         List<TransactionEntity> transactionList = new ArrayList<>();
         String[] lineList = fromFileToLineStringArray(file);
         for ( String line : lineList ) {
             transactionList.add(mapLineToTransactionEntity(line));
         }
-        return transactionList;
+        transactionService.persistListFromFile(transactionList);
     }
 
     private TransactionEntity mapLineToTransactionEntity(String line) {
@@ -31,8 +36,7 @@ public class CnabFileService {
         for (TransactionElementsEnum elementEnum : TransactionElementsEnum.values()) {
             lineToMap(line, transactionElements,  elementEnum);
         }
-        final ObjectMapper mapper = new ObjectMapper();
-        return  mapper.convertValue(transactionElements, TransactionEntity.class);
+        return transactionService.mapToEntityWithRules(transactionElements);
     }
 
     private void lineToMap(String line, Map<String, String> mapOfElements, TransactionElementsEnum elementEnum) {

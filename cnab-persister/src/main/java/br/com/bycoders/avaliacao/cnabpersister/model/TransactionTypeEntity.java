@@ -1,6 +1,7 @@
 package br.com.bycoders.avaliacao.cnabpersister.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "transaction_type")
@@ -18,7 +19,7 @@ public class TransactionTypeEntity {
     private String nature;
 
     @Column(name = "signal")
-    private Integer signal;
+    private BigDecimal signal;
 
     public Long getTransactionTypeId() {
         return transactionTypeId;
@@ -44,11 +45,11 @@ public class TransactionTypeEntity {
         this.nature = nature;
     }
 
-    public Integer getSignal() {
+    public BigDecimal getSignal() {
         return signal;
     }
 
-    public void setSignal(Integer signal) {
+    public void setSignal(BigDecimal signal) {
         this.signal = signal;
     }
 
