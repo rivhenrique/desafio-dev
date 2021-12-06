@@ -8,10 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CnabFileService {
@@ -33,23 +30,21 @@ public class CnabFileService {
 
     private TransactionEntity mapLineToTransactionEntity(String line) {
         Map<String, String> transactionElements = new HashMap<>();
-        for (TransactionElementsEnum elementEnum : TransactionElementsEnum.values()) {
-            lineToMap(line, transactionElements,  elementEnum);
-        }
+        Arrays.stream(TransactionElementsEnum.values())
+                .forEach(element -> createKeyOnMap(line, transactionElements, element));
         return transactionService.mapToEntityWithRules(transactionElements);
     }
 
-    private void lineToMap(String line, Map<String, String> mapOfElements, TransactionElementsEnum elementEnum) {
+    private void createKeyOnMap(String line, Map<String, String> mapOfElements, TransactionElementsEnum elementEnum) {
         Integer index = elementEnum.getIndex();
-        Integer length = elementEnum.getLength();
-        String element = line.substring(index, Math.min(index + length, line.length()));
+        int finalLength = Math.min(index + elementEnum.getLength(), line.length());
+        String element = line.substring(index, finalLength);
         mapOfElements.put(elementEnum.getKeyName(), element);
     }
 
     private String[] fromFileToLineStringArray(MultipartFile file) {
         StringBuilder resultStringBuilder = new StringBuilder();
-        try (BufferedReader br
-                     = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             String line;
             while ((line = br.readLine()) != null) {
                 resultStringBuilder.append(line).append("\n");
