@@ -3,7 +3,6 @@ package br.com.bycoders.avaliacao.cnabpersister.controller;
 import br.com.bycoders.avaliacao.cnabpersister.dto.StoresTransactionsResponseDTO;
 import br.com.bycoders.avaliacao.cnabpersister.service.CnabFileService;
 import br.com.bycoders.avaliacao.cnabpersister.service.TransactionService;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

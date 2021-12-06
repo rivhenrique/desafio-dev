@@ -6,12 +6,12 @@ Gostaria primeiramente de agradecer a oportunidade que vocês me deram! Obrigado
 
 - [x] Ter uma tela (via um formulário) para fazer o upload do arquivo(pontos extras se não usar um popular CSS Framework )
 - [x] Interpretar ("parsear") o arquivo recebido, normalizar os dados, e salvar corretamente a informação em um banco de dados relacional, se atente as documentações que estão logo abaixo.
-- [x] Exibir uma lista das operações importadas por lojas, e nesta lista deve conter um totalizador do saldo em conta
+- [x] +- Exibir uma lista das operações importadas por lojas, e nesta lista deve conter um totalizador do saldo em conta
 - [x] Ser escrita na sua linguagem de programação de preferência
 - [x] Ser simples de configurar e rodar, funcionando em ambiente compatível com Unix (Linux ou Mac OS X). Ela deve utilizar apenas linguagens e bibliotecas livres ou gratuitas.
 - [x] Git com commits atomicos e bem descritos
 - [x] PostgreSQL, MySQL ou SQL Server
-- [ ] Ter testes automatizados
+- [x] Ter testes automatizados
 - [x] Docker compose (Pontos extras se utilizar)
 - [x] Readme file descrevendo bem o projeto e seu setup
 - [x] Incluir informação descrevendo como consumir o endpoint da API
@@ -21,7 +21,7 @@ Gostaria primeiramente de agradecer a oportunidade que vocês me deram! Obrigado
 
 1. Clone o projeto para sua máquina local [Reposotório Git](https://github.com/rivhenrique/desafio-dev)
 2. Construa a aplicação utilizando o [Maven](https://maven.apache.org/) no diretório do arquivo pom.xml
-   1. mvn clean package -DskipTests=true
+   1. mvn clean package
 3. Execute o ambiente [Docker](https://www.docker.com/) no mesmo diretório que o arquivo docker-compose.yml o comando: 
    1. docker-compose up --build
 4. Pronto!!! A aplicação e o banco de dados já estão rodando!!!!!
