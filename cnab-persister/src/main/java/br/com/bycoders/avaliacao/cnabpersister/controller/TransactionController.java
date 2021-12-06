@@ -26,7 +26,10 @@ public class TransactionController {
     }
 
     @PostMapping(value = "/cnab-file/upload")
-    public String cnabFileUpload(@RequestParam("file") MultipartFile file, Model model) {
+    public String cnabFileUpload(@RequestParam("file") MultipartFile file) {
+        if ( file == null || file.isEmpty() ) {
+            return "Arquivo falhou ao ser enviado!!";
+        }
         cnabFileService.processFile(file);
         return "Upload e processamento do arquivo realizado com sucesso! Para ver a lista completa clique no link: \n" +
                 "<a href=\"http://localhost:8080/cnab-persister/transaction/stores/report\">Listar Transações</a>\n";
