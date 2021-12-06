@@ -32,7 +32,6 @@ public class TransactionService {
 
     public StoresTransactionsResponseDTO detailStoreTransactions() {
         StoresTransactionsResponseDTO responseDTO = new StoresTransactionsResponseDTO();
-
         List<StoresAndBalancesDTO> storesAndBalancesDTOS = transactionRepository.storeBalanceByName();
 
         storesAndBalancesDTOS.forEach(dto -> {
@@ -43,6 +42,17 @@ public class TransactionService {
         return responseDTO;
     }
 
+    public TransactionEntity mapToEntityWithRules(Map<String, String> transactionElements) {
+        final ObjectMapper mapper = new ObjectMapper();
+        TransactionEntity transactionEntity = mapper.convertValue(transactionElements, TransactionEntity.class);
+        transactionEntity.setAmount(transactionEntity.getAmount().divide(new BigDecimal(100)));
+        return transactionEntity;
+    }
+
+    public void persistListFromFile(List<TransactionEntity> transactionEntities) {
+        transactionRepository.saveAll(transactionEntities);
+    }
+
     private List<TransactionDTO> getTransactionListByStoreName(String storeName) {
         List<TransactionDTO> dtoList = new ArrayList<>();
         List<TransactionEntity> entityList = transactionRepository.findTransactionEntityByStoreName(storeName);
@@ -50,10 +60,6 @@ public class TransactionService {
             dtoList = mapFromEntityToDTO(entityList);
         }
         return dtoList;
-    }
-
-    public void persistListFromFile(List<TransactionEntity> transactionEntities) {
-        transactionRepository.saveAll(transactionEntities);
     }
 
     private List<TransactionDTO> mapFromEntityToDTO(List<TransactionEntity> entityList) {
@@ -71,12 +77,5 @@ public class TransactionService {
                 .filter(type -> entity.getTypeId().equals(type.getTransactionTypeId()))
                 .findFirst()
                 .orElseGet(() -> typeList.get(0));
-    }
-
-    public TransactionEntity mapToEntityWithRules(Map<String, String> transactionElements) {
-        final ObjectMapper mapper = new ObjectMapper();
-        TransactionEntity transactionEntity = mapper.convertValue(transactionElements, TransactionEntity.class);
-        transactionEntity.setAmount(transactionEntity.getAmount().divide(new BigDecimal(100)));
-        return transactionEntity;
     }
 }
