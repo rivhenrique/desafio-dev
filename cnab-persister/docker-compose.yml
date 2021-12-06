@@ -1,25 +1,30 @@
 version: '3.1'
 services:
-  API:
+  cnab-persister-api:
     image: 'cnab-persister.jar'
+    container_name: cnab-persister-application
+    build:
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     depends_on:
-      - PostgreSQL
+      - db-cbab-persister
     command:
-      - dockerize -wait tcp://PostgreSQL:5432
+      - dockerize -wait tcp://db-cbab-persister:5432
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/cnab_persister
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-cbab-persister:5432/cnab_persister
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
-  PostgreSQL:
-    image: postgres:10
+  db-cbab-persister:
+    image: postgres:10.5
     expose:
       - 5432
     ports:
       - "5432:5432"
+    volumes:
+      - ./sql/db-initial-script.sql:/docker-entrypoint-initdb.d/db-initial-script.sql
     environment:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=postgres
