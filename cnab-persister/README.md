@@ -19,12 +19,12 @@ Gostaria primeiramente de agradecer a oportunidade que vocês me deram! Obrigado
 # Configuração da aplicação
 ### O que fazer para rodar a aplicação
 
-1. Clone o projeto para sua máquina local [GIT](https://github.com/rivhenrique/desafio-dev)
-2. Construa a aplicação [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-3. [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-4. [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-5. [Using Spring Data JDBC](https://github.com/spring-projects/spring-data-examples/tree/master/jdbc/basics)
-
+1. Clone o projeto para sua máquina local [Reposotório Git](https://github.com/rivhenrique/desafio-dev)
+2. Construa a aplicação utilizando o [Maven](https://maven.apache.org/) no diretório do arquivo pom.xml
+   1. mvn clean package -DskipTests=true
+3. Execute o ambiente [Docker](https://www.docker.com/) no mesmo diretório que o arquivo docker-compose.yml o comando: 
+   1. docker-compose up --build
+4. Pronto!!! A aplicação e o banco de dados já estão rodando!!!!!
 
 ### Acesso a aplicação
 Para acessar a página estática: 
