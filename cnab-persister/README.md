@@ -17,19 +17,20 @@ Gostaria primeiramente de agradecer a oportunidade que vocês me deram! Obrigado
 - [x] Incluir informação descrevendo como consumir o endpoint da API
 
 # Configuração da aplicação
-### O que fazer para rodar a aplicação
+### O que fazer para rodar a aplicação:
 
-1. Clone o projeto para sua máquina local [Reposotório Git](https://github.com/rivhenrique/desafio-dev)
+1. Clone o projeto para sua máquina local [Repositório Git](https://github.com/rivhenrique/desafio-dev)
 2. Construa a aplicação utilizando o [Maven](https://maven.apache.org/) no diretório do arquivo pom.xml
-   1. mvn clean package
+   - mvn clean package
 3. Execute o ambiente [Docker](https://www.docker.com/) no mesmo diretório que o arquivo docker-compose.yml o comando: 
-   1. docker-compose up --build
+   - docker-compose up --build
 4. Pronto!!! A aplicação e o banco de dados já estão rodando!!!!!
 
 ### Acesso a aplicação
-Para acessar a página estática: 
+Para acessar a aplicação, via [Postman](https://www.postman.com/) ou página: 
 
-* [Início - http://localhost:8080/cnab-persister/upload-file.html](http://localhost:8080/cnab-persister/upload-file.html)
-* [Documentação via Postman](https://www.getpostman.com/collections/759da0922f02a25dfac6)
+* Início - [http://localhost:8080/cnab-persister/upload-file.html](http://localhost:8080/cnab-persister/upload-file.html)
+* [Documentação](https://www.getpostman.com/collections/759da0922f02a25dfac6) via Postman
 * [Github](https://github.com/rivhenrique/desafio-dev)
+* [Gitlab](https://gitlab.com/exemploHen) com meus projetos pessoais
 
