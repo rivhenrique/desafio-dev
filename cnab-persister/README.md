@@ -30,7 +30,7 @@ Gostaria primeiramente de agradecer a oportunidade que vocês me deram! Obrigado
 Para acessar a aplicação, via [Postman](https://www.postman.com/) ou página: 
 
 * Início - [http://localhost:8080/cnab-persister/upload-file.html](http://localhost:8080/cnab-persister/upload-file.html)
-* [Documentação](https://www.getpostman.com/collections/759da0922f02a25dfac6) via Postman
+* Documentação pelo Postman, importação pelo [link](https://www.getpostman.com/collections/759da0922f02a25dfac6) ou pelo arquivo [json](https://github.com/rivhenrique/desafio-dev/blob/main/API%20CNAB.postman_collection.json)
 * [Github](https://github.com/rivhenrique/desafio-dev)
 * [Gitlab](https://gitlab.com/exemploHen) com meus projetos pessoais
 
