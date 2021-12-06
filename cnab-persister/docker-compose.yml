@@ -8,16 +8,16 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - db-cbab-persister
+      - db-cnab-persister
     command:
-      - dockerize -wait tcp://db-cbab-persister:5432
+      - dockerize -wait tcp://db-cnab-persister:5432
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-cbab-persister:5432/cnab_persister
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-cnab-persister:5432/cnab_persister
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
-  db-cbab-persister:
+  db-cnab-persister:
     image: postgres:10.5
     expose:
       - 5432
